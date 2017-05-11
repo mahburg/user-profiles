@@ -15,7 +15,7 @@ var users = [{
   },
   {
     name: 'Lindsey Mayer',
-    password: '777mittens777',
+    password: '7',
     friends: ['Preston McNeil', 'Ryan Rasmussen', 'Terri Ruff']
   }
 ];
@@ -24,18 +24,14 @@ var users = [{
 var exports = module.exports = {};
 
 exports.login = function (req, res, next) {
-
   for (let i = 0; i < users.length; i++) {
-
     if (users[i].name == req.body.name && req.body.password == users[i].password) {
       req.session.currentUser = users[i];
       return res.status(200).json({
         userFound: true
       });
     }
-
   }
-
   res.status(401).json({
     userFound: false
   });
